@@ -1,0 +1,18 @@
+#!/bin/bash
+
+command_not_found_handle () {
+    if [ "$1" == "car" ] ; then
+        printf "do you need a ride, you fucking idiot?\n"
+    else
+        printf "%s isn't a command you fucking idiot\n" "$1"
+    fi
+}
+
+dealias () {
+    if ! alias "$1" 2>/dev/null >/dev/null ; then
+        echo "${1} is not an alias"
+        return 1
+    else
+        type "$1" | sed -E "s/.*to \`(.*)'/\1/"
+    fi
+}

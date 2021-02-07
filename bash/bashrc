@@ -1,0 +1,68 @@
+#
+# xdg bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+XDG_DATA_LOC=${XDG_DATA_HOME:-"$HOME/.local/share"}
+# get directory this bashrc is located in
+# also cds to said directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# aliases
+alias ls='ls --color=auto -F'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ll -a'
+
+alias df='df -h'
+alias free='free -hw --total'
+
+# shell behaviour
+export HISTCONTROL="ignoredups:ignorespace"
+if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" ]] ; then
+    RESET="\[$(tput sgr0)\]"
+    BOLD="\[$(tput bold)\]"
+    B_DARKGREY="\[$(tput setab 236)\]"
+    F_DARKGREY="\[$(tput setaf 236)\]"
+    B_PURPLE="\[$(tput setab 55)\]"
+    F_PURPLE="\[$(tput setaf 55)\]"
+    F_GREY="\[$(tput setaf 240)\]"
+    B_GREY="\[$(tput setab 240)\]"
+    F_WHITE="\[$(tput setaf 15)\]"
+    B_BLUE="\[$(tput setab 18)\]"
+    F_BLUE="\[$(tput setaf 18)\]"
+    # powerline arrow
+    ARROW=""
+    PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \H ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}${RESET} "
+else
+    PS1="\[$(tput setaf 2)\]\u\[$(tput sgr0)\]@\[$(tput setaf 2)\]\H\[$(tput sgr0)\]\[$(tput setaf 4)$(tput bold)\] \w \[$(tput sgr0)\]$ "
+fi
+
+# disable shell builtins
+enable -n echo
+
+# custom functions
+source "${SCRIPT_DIR}/bash_functions"
+
+export WINEARCH="win32"
+export WINEPREFIX="${XDG_DATA_LOC}/wine"
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "/home/ashyboxy/.local/share/acme.sh/acme.sh.env"
+
+# follow xdg by default ffs
+export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
+export CARGO_HOME="${XDG_DATA_LOC}/cargo"
+
+# ssh-agent
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
