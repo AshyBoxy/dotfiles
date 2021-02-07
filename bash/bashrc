@@ -53,7 +53,6 @@ export WINEPREFIX="${XDG_DATA_LOC}/wine"
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "/home/ashyboxy/.local/share/acme.sh/acme.sh.env"
 
 # follow xdg by default ffs
 export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
