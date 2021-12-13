@@ -18,10 +18,13 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ll -a'
 
+alias du='du -hs'
 alias df='df -h'
 alias free='free -hw --total'
 
-alias du='du -hs'
+alias ip='ip --color'
+
+alias sudo='sudo '
 
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
@@ -72,4 +75,4 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
 fi
 
 # lua
-export LUAROCKS_CONFIG_5_4="${XDG_CONF_LOC}/luarocks/config-5.4.lua"
+#export LUAROCKS_CONFIG_5_4="${XDG_CONF_LOC}/luarocks/config-5.4.lua"
