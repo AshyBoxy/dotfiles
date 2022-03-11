@@ -94,12 +94,6 @@ bindsym Mod4+Shift+s exec "rofi -modi scrot:$HOME/.local/bin/rofi-scrot -show sc
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindsym Mod4+d exec --no-startup-id i3-dmenu-desktop
 
-# reload polybar
-bindsym Mod4+Shift+Control+p exec --no-startup-id "$HOME/.config/polybar/launch.sh"
-# reload picom
-# c for compositor
-bindsym Mod4+Shift+Control+c exec --no-startup-id "$HOME/.config/picom/launch.sh"
-
 # change focus
 bindsym Mod4+$left focus left
 bindsym Mod4+$down focus down
@@ -249,7 +243,14 @@ bindsym Mod4+grave exec dunstctl history-pop
 bindsym Mod4+shift+period exec dunstctl context
 
 exec_always --no-startup-id xset r rate 350 30
-exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/ashyboxy/windows/A Place/Wallpapers/yuuki.jpg'
+exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/ashyboxy/windows/A Place/Wallpapers/yuuki-s2n1.png'
+#exec_always --no-startup-id xmodmap $HOME/.config/xmodmap/table
+
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+# reload polybar
+bindsym Mod4+Shift+Control+p exec --no-startup-id "$HOME/.config/polybar/launch.sh"
+
 exec_always --no-startup-id $HOME/.config/picom/launch.sh
-exec_always --no-startup-id xmodmap $HOME/.config/xmodmap/table
+# reload picom
+# c for compositor
+bindsym Mod4+Shift+Control+c exec --no-startup-id "$HOME/.config/picom/launch.sh"
