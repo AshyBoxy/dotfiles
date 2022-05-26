@@ -243,7 +243,7 @@ bindsym Mod4+grave exec dunstctl history-pop
 bindsym Mod4+shift+period exec dunstctl context
 
 exec_always --no-startup-id xset r rate 350 30
-exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/ashyboxy/windows/A Place/Wallpapers/yuuki-s2n1.png'
+exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/ashyboxy/ssd/Wallpapers/yuuki-s2n1.png'
 #exec_always --no-startup-id xmodmap $HOME/.config/xmodmap/table
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

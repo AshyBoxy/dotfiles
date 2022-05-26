@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mode="p"
+mode="c"
 sleep_pid=0
 
 refresh () {

@@ -26,9 +26,11 @@ alias ip='ip --color'
 
 alias sudo='sudo '
 
+alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
+
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
-if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" ]] ; then
+if [[ $TERM = "xterm-kitty" ]] ; then
     RESET="\[$(tput sgr0)\]"
     BOLD="\[$(tput bold)\]"
     B_DARKGREY="\[$(tput setab 236)\]"
@@ -43,6 +45,24 @@ if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" ]] ; then
     # powerline arrow
     ARROW=""
     PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \H ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}${RESET} "
+elif [[ $TERM = "xterm-256color" ]] ; then
+    RESET="\[$(tput sgr0)\]"
+    BOLD="\[$(tput bold)\]"
+    B_DARKGREY="\[$(tput setab 236)\]"
+    F_DARKGREY="\[$(tput setaf 236)\]"
+    B_PURPLE="\[$(tput setab 55)\]"
+    F_PURPLE="\[$(tput setaf 55)\]"
+    F_GREY="\[$(tput setaf 240)\]"
+    B_GREY="\[$(tput setab 240)\]"
+    F_WHITE="\[$(tput setaf 15)\]"
+    B_BLUE="\[$(tput setab 18)\]"
+    F_BLUE="\[$(tput setaf 18)\]"
+    # this looks bad.
+    # i can't figure out why the powerline arrow won't work in vs code
+    # it works fine on my desktop
+    # why not on my laptop
+    ARROW=""
+    PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \H ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}$>${RESET} "
 else
     PS1="\[$(tput setaf 2)\]\u\[$(tput sgr0)\]@\[$(tput setaf 2)\]\H\[$(tput sgr0)\]\[$(tput setaf 4)$(tput bold)\] \w \[$(tput sgr0)\]$ "
 fi
