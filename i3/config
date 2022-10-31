@@ -245,6 +245,7 @@ bindsym Mod4+shift+period exec dunstctl context
 exec_always --no-startup-id xset r rate 350 30
 exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/ashyboxy/windows/A Place/Wallpapers/yuuki-s2n1.png'
 #exec_always --no-startup-id xmodmap $HOME/.config/xmodmap/table
+exec_always --no-startup-id $HOME/.config/xmodmap/load.sh
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # reload polybar
