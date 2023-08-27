@@ -5,11 +5,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+_find_dotfiles () {
+    local a="$(dirname "$(readlink "$1")")"
+    if [ -a "${a}/is-dotfiles" ] ; then echo "$a" ; return 0 ; fi
+    a="$(dirname "$1")"
+    if [ -a "${a}/is-dotfiles" ] ; then echo "$a" ; return 0 ; fi
+    a="$HOME/.local/dotfiles"
+    if [ -a "${a}/is-dotfiles" ] ; then echo "$a" ; return 0 ; fi
+    return 1
+}
+
 XDG_DATA_LOC=${XDG_DATA_HOME:-"$HOME/.local/share"}
 XDG_CONF_LOC=${XDG_CONFIG_HOME:-"$HOME/.config"}
 # get directory this bashrc is located in
 # also cds to said directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DOTFILES="$(_find_dotfiles "$SCRIPT_DIR")"
+if [ -d "${DOTFILES}/bin" ] ; then export PATH="${DOTFILES}/bin:${PATH}" ; fi
 
 # aliases
 alias ls='ls --color=auto -F'
