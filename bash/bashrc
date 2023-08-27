@@ -26,6 +26,9 @@ alias ip='ip --color'
 
 alias sudo='sudo '
 
+# deno misbehaves and makes $HOME/.deno
+alias deno="env HOME=\"${XDG_DATA_HOME}/deno\" deno"
+
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
 if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" ]] ; then
@@ -53,8 +56,8 @@ enable -n echo
 # custom functions
 source "${SCRIPT_DIR}/bash_functions"
 
-#export WINEARCH="win32"
-#export WINEPREFIX="${XDG_DATA_LOC}/wine"
+export WINEARCH="win32"
+export WINEPREFIX="${XDG_DATA_LOC}/wine"
 
 # node/nvm
 export NVM_DIR="$HOME/.config/nvm"

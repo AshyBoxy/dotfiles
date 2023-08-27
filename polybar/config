@@ -10,7 +10,7 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
+#monitor = HDMI-1-0
 width = 100%
 height = 30
 offset-x = 0
@@ -70,6 +70,12 @@ override-redirect = false
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/tray]
+type = internal/tray
+
+format-margin = 8px
+tray-spacing = 8px
 
 [module/space]
 type = custom/text
@@ -239,7 +245,7 @@ label = SWAP %gb_swap_used%/%gb_swap_total%
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp5s0
 interval = 1
 
 #format-connected = <ramp-signal> <label-connected>
@@ -278,7 +284,7 @@ label-disconnected = WIAP DISCONNECTED
 
 [module/eth]
 type = internal/network
-interface = enp4s0
+interface = eno1
 interval = 1
 
 format-connected = <label-connected>

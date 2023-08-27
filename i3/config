@@ -145,11 +145,11 @@ bindsym Mod4+a focus parent
 #bindsym Mod4+d focus child
 
 # move the currently focused window to the scratchpad
-#bindsym Mod4+Shift+minus move scratchpad
+bindsym mod1+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-#bindsym Mod4+minus scratchpad show
+bindsym mod1+minus scratchpad show
 
 workspace_auto_back_and_forth yes
 
@@ -167,6 +167,10 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
+set $wskp1 "13"
+set $wskp2 "14"
+set $wskp3 "15"
+set $wskp4 "16"
 
 # switch to workspace
 bindsym Mod4+1 workspace number $ws1
@@ -181,6 +185,10 @@ bindsym Mod4+9 workspace number $ws9
 bindsym Mod4+0 workspace number $ws10
 bindsym Mod4+minus workspace number $ws11
 bindsym Mod4+equal workspace number $ws12
+bindsym Mod4+KP_End workspace number $wskp1
+bindsym Mod4+KP_Down workspace number $wskp2
+bindsym Mod4+KP_Next workspace number $wskp3
+bindsym Mod4+KP_Left workspace number $wskp4
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace number $ws1
@@ -195,6 +203,10 @@ bindsym Mod4+Shift+9 move container to workspace number $ws9
 bindsym Mod4+Shift+0 move container to workspace number $ws10
 bindsym Mod4+Shift+minus move container to workspace number $ws11
 bindsym Mod4+Shift+equal move container to workspace number $ws12
+bindsym Mod4+Shift+KP_End move container to workspace number $wskp1
+bindsym Mod4+Shift+KP_Down move container to workspace number $wskp2
+bindsym Mod4+Shift+KP_Next move container to workspace number $wskp3
+bindsym Mod4+Shift+KP_Left move container to workspace number $wskp4
 
 # reload the configuration file
 bindsym Mod4+Shift+c reload
@@ -255,3 +267,8 @@ exec_always --no-startup-id $HOME/.config/picom/launch.sh
 # reload picom
 # c for compositor
 bindsym Mod4+Shift+Control+c exec --no-startup-id "$HOME/.config/picom/launch.sh"
+
+# multimedia
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
