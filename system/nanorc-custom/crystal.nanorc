@@ -1,0 +1,40 @@
+## Syntax highlighting for Javascript.
+
+syntax crystal "\.cr$"
+#comment "//"
+
+color brightred "[^ .:,]+"
+color italic,brightred "[^.:=,]+ +[^.:=,]+"
+
+# Declarational stuff.
+#color green "\<(async|class|const|extends|function|let|this|typeof|var|void)\>"
+color bold,cyan "[=]"
+# Flow control and special keywords.
+#color brightyellow "\<(do|while|if|else|switch|case|default|for|each|in|of|with)\>"
+#color brightyellow "\<(await|export|import|throw|try|catch|finally|new|delete)\>"
+color brightyellow "(require)"
+color bold,lightblue "(do|end)"
+# "Exit" points.
+#color magenta "\<(break|continue|return|yield)\>"
+
+# Octal/decimal and hexadecimal numbers.
+#color cyan "\<([0-9]+|0x[0-9A-Fa-f]+)\>"
+color cyan "[0-9]"
+# Special values.
+#color cyan "\<(true|false|null|undefined)\>"
+
+# Strings.
+#color brightmagenta ""(\\.|[^"])*"" "'(\\.|[^'])*'" "`(\\.|[^`])*`"
+color brightmagenta ""(\\.|[^"])*""
+color italic,normal "#\{.+\}"
+
+# Comments.
+#color brightblue "(^|[[:space:]])//.*"
+#color brightblue start="/\*" end="\*/"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
+
+# function arguments?
+color green "\|[a-zA-Z]+\|"
+color normal "\|"
