@@ -78,8 +78,8 @@ export NVM_DIR="$HOME/.config/nvm"
 export NPM_CONFIG_USERCONFIG="${XDG_CONF_LOC}/npm/npmrc"
 
 # follow xdg by default ffs
-#export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
-#export CARGO_HOME="${XDG_DATA_LOC}/cargo"
+export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
+export CARGO_HOME="${XDG_DATA_LOC}/cargo"
 
 # ssh-agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then

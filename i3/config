@@ -171,6 +171,12 @@ set $wskp1 "13"
 set $wskp2 "14"
 set $wskp3 "15"
 set $wskp4 "16"
+set $wskp5 "17"
+set $wskp6 "18"
+set $wskp7 "19"
+set $wskp8 "20"
+set $wskp9 "21"
+set $wskp0 "22"
 
 # switch to workspace
 bindsym Mod4+1 workspace number $ws1
@@ -189,6 +195,12 @@ bindsym Mod4+KP_End workspace number $wskp1
 bindsym Mod4+KP_Down workspace number $wskp2
 bindsym Mod4+KP_Next workspace number $wskp3
 bindsym Mod4+KP_Left workspace number $wskp4
+bindsym Mod4+KP_Begin workspace number $wskp5
+bindsym Mod4+KP_Right workspace number $wskp6
+bindsym Mod4+KP_Home workspace number $wskp7
+bindsym Mod4+KP_Up workspace number $wskp8
+bindsym Mod4+KP_Prior workspace number $wskp9
+bindsym Mod4+KP_Insert workspace number $wskp0
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace number $ws1
@@ -207,6 +219,12 @@ bindsym Mod4+Shift+KP_End move container to workspace number $wskp1
 bindsym Mod4+Shift+KP_Down move container to workspace number $wskp2
 bindsym Mod4+Shift+KP_Next move container to workspace number $wskp3
 bindsym Mod4+Shift+KP_Left move container to workspace number $wskp4
+bindsym Mod4+Shift+KP_Begin move container to workspace number $wskp5
+bindsym Mod4+Shift+KP_Right move container to workspace number $wskp6
+bindsym Mod4+Shift+KP_Home move container to workspace number $wskp7
+bindsym Mod4+Shift+KP_Up move container to workspace number $wskp8
+bindsym Mod4+Shift+KP_Prior move container to workspace number $wskp9
+bindsym Mod4+Shift+KP_Insert move container to workspace number $wskp0
 
 # reload the configuration file
 bindsym Mod4+Shift+c reload
@@ -272,3 +290,6 @@ bindsym Mod4+Shift+Control+c exec --no-startup-id "$HOME/.config/picom/launch.sh
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym Mod1+Control+Shift+p exec --no-startup-id playerctl play-pause
+bindsym Mod1+Control+Shift+Right exec --no-startup-id playerctl next
+bindsym Mod1+Control+Shift+Left exec --no-startup-id playerctl previous
