@@ -1,5 +1,17 @@
 #!/bin/bash
 
+addssh () {
+    a=()
+    while [ $# -gt 0 ] ; do
+        case "$1" in
+            /*) a+=("$1") ;;
+            *) a+=("${HOME}/.config/ssh/$1") ;;
+        esac
+        shift
+    done
+    ssh-add "${a[@]}"
+}
+
 command_not_found_handle () {
     if [ "$1" == "car" ] ; then
         printf "do you need a ride, you fucking idiot?\n"

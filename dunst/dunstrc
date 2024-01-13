@@ -2,6 +2,7 @@
 
 [global]
     ### Display ###
+    layer = overlay
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
