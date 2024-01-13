@@ -91,3 +91,5 @@ fi
 
 # lua
 #export LUAROCKS_CONFIG_5_4="${XDG_CONF_LOC}/luarocks/config-5.4.lua"
+
+export GPG_TTY="$(tty)"
