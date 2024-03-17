@@ -43,7 +43,7 @@ alias deno="env HOME=\"${XDG_DATA_HOME}/deno\" deno"
 
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
-if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" ]] ; then
+if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" || $TERM = "tmux-256color" ]] ; then
     RESET="\[$(tput sgr0)\]"
     BOLD="\[$(tput bold)\]"
     B_DARKGREY="\[$(tput setab 236)\]"
@@ -93,3 +93,6 @@ fi
 #export LUAROCKS_CONFIG_5_4="${XDG_CONF_LOC}/luarocks/config-5.4.lua"
 
 export GPG_TTY="$(tty)"
+
+# some people have an ssh key that lets them get readonly access to this tmux session
+alias tmux-shared='tmux new -As shared'
