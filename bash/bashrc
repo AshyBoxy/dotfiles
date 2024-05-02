@@ -68,8 +68,9 @@ enable -n echo
 # custom functions
 source "${SCRIPT_DIR}/bash_functions"
 
-export WINEARCH="win32"
-export WINEPREFIX="${XDG_DATA_LOC}/wine"
+export WINEARCH="win64"
+#export WINEPREFIX="${XDG_DATA_LOC}/wine"
+if [ -d "${XDG_DATA_LOC}/wine64" ] ; then export WINEPREFIX="${XDG_DATA_LOC}/wine64" ; else export WINEPREFIX="${XDG_DATA_LOC}/wine" ; fi
 
 # node/nvm
 export NVM_DIR="$HOME/.config/nvm"
