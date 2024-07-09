@@ -97,3 +97,5 @@ export GPG_TTY="$(tty)"
 
 # some people have an ssh key that lets them get readonly access to this tmux session
 alias tmux-shared='tmux new -As shared'
+
+export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
