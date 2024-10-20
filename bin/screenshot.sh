@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
-BASE_FILENAME="/home/ashyboxy/hdd/screenshots/$(date '+%Y-%m-%d-%H%M%S')"
+if [ -z "$DOTFILES" ] ; then
+    echo "DOTFILES is not set" >&2
+    exit 1
+fi
+
+source "${DOTFILES}/config"
+
+if [ -z "$screenshots_path" ] ; then
+    echo "screenshots_path is not set" >&2
+    exit 1
+fi
+
+BASE_FILENAME="${screenshots_path}/$(date '+%Y-%m-%d-%H%M%S')"
 
 if [ "$XDG_SESSION_TYPE" = wayland ] ; then
     if [ "$XDG_SESSION_DESKTOP" = Hyprland ] && command -v hyprshot > /dev/null ; then
