@@ -93,7 +93,10 @@ fi
 # lua
 #export LUAROCKS_CONFIG_5_4="${XDG_CONF_LOC}/luarocks/config-5.4.lua"
 
-export GPG_TTY="$(tty)"
+# don't set this on jellybean mobile
+if ! readlink /etc/modprobe.d > /dev/null ; then
+    export GPG_TTY="$(tty)"
+fi
 
 # some people have an ssh key that lets them get readonly access to this tmux session
 alias tmux-shared='tmux new -As shared'
