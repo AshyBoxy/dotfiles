@@ -89,3 +89,10 @@ function patch_strings_in_file() {
         done
     fi
 }
+
+function echoa () {
+    while (( "$#" )) ; do
+        echo "arg $#: $1"
+        shift
+    done
+}
