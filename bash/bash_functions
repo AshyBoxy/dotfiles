@@ -29,19 +29,19 @@ dealias () {
     fi
 }
 
-nano () {
-	local makefile=0
-	local args=("$@")
-
-	while [ $# -gt 0 ] ; do
-		[ "$1" = "Makefile" -o "${1%.mk}" != "$1" ] && makefile=1
-		shift
-	done
-
-	[ $makefile -eq 0 ] && args+=("-E")
-
-	/usr/bin/nano "${args[@]}"
-}
+#nano () {
+#	local makefile=0
+#	local args=("$@")
+#
+#	while [ $# -gt 0 ] ; do
+#		[ "$1" = "Makefile" -o "${1%.mk}" != "$1" ] && makefile=1
+#		shift
+#	done
+#
+#	[ $makefile -eq 0 ] && args+=("-E")
+#
+#	/usr/bin/nano "${args[@]}"
+#}
 
 # i always have to look this up
 create_vmdk () {
@@ -88,4 +88,11 @@ function patch_strings_in_file() {
             fi
         done
     fi
+}
+
+function echoa () {
+    while (( "$#" )) ; do
+        echo "arg $#: $1"
+        shift
+    done
 }

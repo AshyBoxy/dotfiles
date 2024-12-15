@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-#if [ -z "$DOTFILES" ] ; then
-#    echo "DOTFILES is not set" >&2
-#    exit 1
-#fi
-#
-#source "${DOTFILES}/config"
+if [ -z "$DOTFILES" ] ; then
+    echo "DOTFILES is not set" >&2
+    exit 1
+fi
 
-screenshots_path="/home/ashyboxy/stuff/screenshots"
+source "${DOTFILES}/config"
 
 if [ -z "$screenshots_path" ] ; then
     echo "screenshots_path is not set" >&2

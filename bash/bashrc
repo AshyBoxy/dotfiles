@@ -20,7 +20,7 @@ XDG_CONF_LOC=${XDG_CONFIG_HOME:-"$HOME/.config"}
 # get directory this bashrc is located in
 # also cds to said directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-DOTFILES="$(_find_dotfiles "$SCRIPT_DIR")"
+export DOTFILES="$(_find_dotfiles "$SCRIPT_DIR")"
 if [ -d "${DOTFILES}/bin" ] ; then export PATH="${DOTFILES}/bin:${PATH}" ; fi
 
 # aliases
@@ -73,10 +73,13 @@ export WINEARCH="win64"
 if [ -d "${XDG_DATA_LOC}/wine64" ] ; then export WINEPREFIX="${XDG_DATA_LOC}/wine64" ; else export WINEPREFIX="${XDG_DATA_LOC}/wine" ; fi
 
 # node/nvm
-export NVM_DIR="$HOME/.config/nvm"
+export NVM_DIR="${XDG_CONF_LOC}/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NPM_CONFIG_USERCONFIG="${XDG_CONF_LOC}/npm/npmrc"
+# bun
+export BUN_INSTALL="${XDG_DATA_LOC}/bun"
+export PATH="${BUN_INSTALL}/bin:$PATH"
 
 # follow xdg by default ffs
 export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
