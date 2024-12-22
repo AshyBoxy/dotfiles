@@ -37,6 +37,7 @@ alias free='free -hw --total'
 alias ip='ip --color'
 
 alias sudo='sudo '
+alias rclone-mnt='rclone mount --daemon'
 
 # deno misbehaves and makes $HOME/.deno
 alias deno="env HOME=\"${XDG_DATA_HOME}/deno\" deno"
