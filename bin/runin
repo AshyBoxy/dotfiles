@@ -1,0 +1,7 @@
+#!/bin/sh
+export HOME="$(pwd)"
+export XDG_DATA_HOME="$HOME"
+export XDG_CACHE_HOME="$HOME"
+export XDG_CONFIG_HOME="$HOME"
+
+exec "$@"
