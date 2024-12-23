@@ -8,21 +8,6 @@ command_not_found_handle () {
     fi
 }
 
-# ssh with tmux
-ssht () {
-    # tmuxl is execlang
-    # powerline fonts don't work if LANG isn't set correctly
-    local HOSTS_WITH_TMUXL=("arch")
-    local CMD="tmux"
-    local session="$2"
-    [ -z "$session" ] && session=default
-    local host="$1"
-    shift 2 || shift
-    for i in ${HOSTS_WITH_TMUXL} ; do [ "$i" = "$host" ] && CMD=tmuxl && break ; done
-    ssh $host $@ -t "$CMD new -A -t $session"
-}
-
-
 # i always have to look this up
 create_vmdk () {
     VBoxManage internalcommands createrawvmdk -filename "$2" -rawdisk "$1"
