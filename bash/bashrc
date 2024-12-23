@@ -26,7 +26,10 @@ alias ip='ip --color'
 
 alias sudo='sudo '
 
-alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
+if [ "$HOSTNAME" = "cake" ] ; then
+    # from what i remember this works around a weird bug with the weird hardware in this laptop?
+    alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
+fi
 
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
