@@ -26,8 +26,6 @@ alias ip='ip --color'
 
 alias sudo='sudo '
 
-alias dealias='echo ' # much better
-
 alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
 
 # shell behaviour
