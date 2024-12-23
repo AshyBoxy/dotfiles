@@ -76,8 +76,10 @@ enable -n echo
 # custom functions
 source "${SCRIPT_DIR}/bash_functions"
 
-export WINEARCH="win32"
-export WINEPREFIX="${XDG_DATA_LOC}/wine"
+if [ "$HOSTNAME" = "cake" ] ; then
+    export WINEARCH="win32"
+    export WINEPREFIX="${XDG_DATA_LOC}/wine"
+fi
 
 # node/nvm
 export NVM_DIR="$HOME/.config/nvm"
