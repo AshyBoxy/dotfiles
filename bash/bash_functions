@@ -1,5 +1,17 @@
 #!/bin/bash
 
+addssh () {
+    a=()
+    while [ $# -gt 0 ] ; do
+        case "$1" in
+            /*) a+=("$1") ;;
+            *) a+=("${HOME}/.config/ssh/$1") ;;
+        esac
+        shift
+    done
+    ssh-add "${a[@]}"
+}
+
 command_not_found_handle () {
     if [ "$1" == "car" ] ; then
         printf "do you need a ride, you fucking idiot?\n"
@@ -7,6 +19,29 @@ command_not_found_handle () {
         printf "%s isn't a command you fucking idiot\n" "$1"
     fi
 }
+
+dealias () {
+    if ! alias "$1" 2>/dev/null >/dev/null ; then
+        echo "${1} is not an alias"
+        return 1
+    else
+        type "$1" | sed -E "s/.*to \`(.*)'/\1/"
+    fi
+}
+
+#nano () {
+#	local makefile=0
+#	local args=("$@")
+#
+#	while [ $# -gt 0 ] ; do
+#		[ "$1" = "Makefile" -o "${1%.mk}" != "$1" ] && makefile=1
+#		shift
+#	done
+#
+#	[ $makefile -eq 0 ] && args+=("-E")
+#
+#	/usr/bin/nano "${args[@]}"
+#}
 
 # i always have to look this up
 create_vmdk () {
@@ -53,4 +88,11 @@ function patch_strings_in_file() {
             fi
         done
     fi
+}
+
+function echoa () {
+    while (( "$#" )) ; do
+        echo "arg $#: $1"
+        shift
+    done
 }

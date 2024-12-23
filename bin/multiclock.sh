@@ -1,6 +1,8 @@
 #!/bin/sh
 
-mode="c"
+echo $$ > "$XDG_RUNTIME_DIR"/multiclock.pid
+
+mode="p"
 sleep_pid=0
 
 refresh () {
@@ -28,3 +30,5 @@ while true ; do
     sleep_pid=$!
     wait
 done
+
+rm "$XDG_RUNTIME_DIR"/multiclock.pid

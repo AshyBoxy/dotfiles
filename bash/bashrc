@@ -5,11 +5,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+_find_dotfiles () {
+    local a="$(dirname "$(readlink "$1")")"
+    if [ -a "${a}/is-dotfiles" ] ; then echo "$a" ; return 0 ; fi
+    a="$(dirname "$1")"
+    if [ -a "${a}/is-dotfiles" ] ; then echo "$a" ; return 0 ; fi
+    a="$HOME/.local/dotfiles"
+    if [ -a "${a}/is-dotfiles" ] ; then echo "$a" ; return 0 ; fi
+    return 1
+}
+
 XDG_DATA_LOC=${XDG_DATA_HOME:-"$HOME/.local/share"}
 XDG_CONF_LOC=${XDG_CONFIG_HOME:-"$HOME/.config"}
 # get directory this bashrc is located in
 # also cds to said directory
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export DOTFILES="$(_find_dotfiles "$SCRIPT_DIR")"
+if [ -d "${DOTFILES}/bin" ] ; then export PATH="${DOTFILES}/bin:${PATH}" ; fi
 
 # aliases
 alias ls='ls --color=auto -F'
@@ -25,6 +37,10 @@ alias free='free -hw --total'
 alias ip='ip --color'
 
 alias sudo='sudo '
+alias rclone-mnt='rclone mount --daemon'
+
+# deno misbehaves and makes $HOME/.deno
+alias deno="env HOME=\"${XDG_DATA_HOME}/deno\" deno"
 
 if [ "$HOSTNAME" = "cake" ] ; then
     # from what i remember this works around a weird bug with the weird hardware in this laptop?
@@ -33,7 +49,7 @@ fi
 
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
-if [[ $TERM = "xterm-kitty" ]] ; then
+if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" || $TERM = "tmux-256color" ]] ; then
     RESET="\[$(tput sgr0)\]"
     BOLD="\[$(tput bold)\]"
     B_DARKGREY="\[$(tput setab 236)\]"
@@ -48,24 +64,6 @@ if [[ $TERM = "xterm-kitty" ]] ; then
     # powerline arrow
     ARROW=""
     PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \H ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}${RESET} "
-elif [[ $TERM = "xterm-256color" ]] ; then
-    RESET="\[$(tput sgr0)\]"
-    BOLD="\[$(tput bold)\]"
-    B_DARKGREY="\[$(tput setab 236)\]"
-    F_DARKGREY="\[$(tput setaf 236)\]"
-    B_PURPLE="\[$(tput setab 55)\]"
-    F_PURPLE="\[$(tput setaf 55)\]"
-    F_GREY="\[$(tput setaf 240)\]"
-    B_GREY="\[$(tput setab 240)\]"
-    F_WHITE="\[$(tput setaf 15)\]"
-    B_BLUE="\[$(tput setab 18)\]"
-    F_BLUE="\[$(tput setaf 18)\]"
-    # this looks bad.
-    # i can't figure out why the powerline arrow won't work in vs code
-    # it works fine on my desktop
-    # why not on my laptop
-    ARROW=""
-    PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \H ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}$>${RESET} "
 else
     PS1="\[$(tput setaf 2)\]\u\[$(tput sgr0)\]@\[$(tput setaf 2)\]\H\[$(tput sgr0)\]\[$(tput setaf 4)$(tput bold)\] \w \[$(tput sgr0)\]$ "
 fi
@@ -79,17 +77,24 @@ source "${SCRIPT_DIR}/bash_functions"
 if [ "$HOSTNAME" = "cake" ] ; then
     export WINEARCH="win32"
     export WINEPREFIX="${XDG_DATA_LOC}/wine"
+else
+    export WINEARCH="win64"
+    #export WINEPREFIX="${XDG_DATA_LOC}/wine"
+    if [ -d "${XDG_DATA_LOC}/wine64" ] ; then export WINEPREFIX="${XDG_DATA_LOC}/wine64" ; else export WINEPREFIX="${XDG_DATA_LOC}/wine" ; fi
 fi
 
 # node/nvm
-export NVM_DIR="$HOME/.config/nvm"
+export NVM_DIR="${XDG_CONF_LOC}/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NPM_CONFIG_USERCONFIG="${XDG_CONF_LOC}/npm/npmrc"
+# bun
+export BUN_INSTALL="${XDG_DATA_LOC}/bun"
+export PATH="${BUN_INSTALL}/bin:$PATH"
 
 # follow xdg by default ffs
-#export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
-#export CARGO_HOME="${XDG_DATA_LOC}/cargo"
+export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
+export CARGO_HOME="${XDG_DATA_LOC}/cargo"
 
 # ssh-agent
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
@@ -101,3 +106,13 @@ fi
 
 # lua
 #export LUAROCKS_CONFIG_5_4="${XDG_CONF_LOC}/luarocks/config-5.4.lua"
+
+# don't set this on jellybean mobile
+if ! readlink /etc/modprobe.d > /dev/null ; then
+    export GPG_TTY="$(tty)"
+fi
+
+# some people have an ssh key that lets them get readonly access to this tmux session
+alias tmux-shared='tmux new -As shared'
+
+export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct

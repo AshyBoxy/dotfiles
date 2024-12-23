@@ -145,11 +145,11 @@ bindsym Mod4+a focus parent
 #bindsym Mod4+d focus child
 
 # move the currently focused window to the scratchpad
-#bindsym Mod4+Shift+minus move scratchpad
+bindsym mod1+Shift+minus move scratchpad
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
-#bindsym Mod4+minus scratchpad show
+bindsym mod1+minus scratchpad show
 
 workspace_auto_back_and_forth yes
 
@@ -167,6 +167,16 @@ set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
 set $ws12 "12"
+set $wskp1 "13"
+set $wskp2 "14"
+set $wskp3 "15"
+set $wskp4 "16"
+set $wskp5 "17"
+set $wskp6 "18"
+set $wskp7 "19"
+set $wskp8 "20"
+set $wskp9 "21"
+set $wskp0 "22"
 
 # switch to workspace
 bindsym Mod4+1 workspace number $ws1
@@ -181,6 +191,16 @@ bindsym Mod4+9 workspace number $ws9
 bindsym Mod4+0 workspace number $ws10
 bindsym Mod4+minus workspace number $ws11
 bindsym Mod4+equal workspace number $ws12
+bindsym Mod4+KP_End workspace number $wskp1
+bindsym Mod4+KP_Down workspace number $wskp2
+bindsym Mod4+KP_Next workspace number $wskp3
+bindsym Mod4+KP_Left workspace number $wskp4
+bindsym Mod4+KP_Begin workspace number $wskp5
+bindsym Mod4+KP_Right workspace number $wskp6
+bindsym Mod4+KP_Home workspace number $wskp7
+bindsym Mod4+KP_Up workspace number $wskp8
+bindsym Mod4+KP_Prior workspace number $wskp9
+bindsym Mod4+KP_Insert workspace number $wskp0
 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace number $ws1
@@ -195,6 +215,16 @@ bindsym Mod4+Shift+9 move container to workspace number $ws9
 bindsym Mod4+Shift+0 move container to workspace number $ws10
 bindsym Mod4+Shift+minus move container to workspace number $ws11
 bindsym Mod4+Shift+equal move container to workspace number $ws12
+bindsym Mod4+Shift+KP_End move container to workspace number $wskp1
+bindsym Mod4+Shift+KP_Down move container to workspace number $wskp2
+bindsym Mod4+Shift+KP_Next move container to workspace number $wskp3
+bindsym Mod4+Shift+KP_Left move container to workspace number $wskp4
+bindsym Mod4+Shift+KP_Begin move container to workspace number $wskp5
+bindsym Mod4+Shift+KP_Right move container to workspace number $wskp6
+bindsym Mod4+Shift+KP_Home move container to workspace number $wskp7
+bindsym Mod4+Shift+KP_Up move container to workspace number $wskp8
+bindsym Mod4+Shift+KP_Prior move container to workspace number $wskp9
+bindsym Mod4+Shift+KP_Insert move container to workspace number $wskp0
 
 # reload the configuration file
 bindsym Mod4+Shift+c reload
@@ -245,6 +275,7 @@ bindsym Mod4+shift+period exec dunstctl context
 exec_always --no-startup-id xset r rate 350 30
 exec_always --no-startup-id feh --no-fehbg --bg-fill '/home/ashyboxy/ssd/Wallpapers/yuuki-s2n1.png'
 #exec_always --no-startup-id xmodmap $HOME/.config/xmodmap/table
+exec_always --no-startup-id $HOME/.config/xmodmap/load.sh
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # reload polybar
@@ -254,3 +285,11 @@ exec_always --no-startup-id $HOME/.config/picom/launch.sh
 # reload picom
 # c for compositor
 bindsym Mod4+Shift+Control+c exec --no-startup-id "$HOME/.config/picom/launch.sh"
+
+# multimedia
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym Mod1+Control+Shift+p exec --no-startup-id playerctl play-pause
+bindsym Mod1+Control+Shift+Right exec --no-startup-id playerctl next
+bindsym Mod1+Control+Shift+Left exec --no-startup-id playerctl previous
