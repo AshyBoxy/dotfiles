@@ -26,6 +26,8 @@ alias ip='ip --color'
 
 alias sudo='sudo '
 
+alias dealias='echo ' # much better
+
 alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
 
 # shell behaviour
@@ -73,8 +75,8 @@ enable -n echo
 # custom functions
 source "${SCRIPT_DIR}/bash_functions"
 
-#export WINEARCH="win32"
-#export WINEPREFIX="${XDG_DATA_LOC}/wine"
+export WINEARCH="win32"
+export WINEPREFIX="${XDG_DATA_LOC}/wine"
 
 # node/nvm
 export NVM_DIR="$HOME/.config/nvm"
