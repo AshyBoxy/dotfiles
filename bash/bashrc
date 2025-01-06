@@ -37,9 +37,15 @@ alias free='free -hw --total'
 alias ip='ip --color'
 
 alias sudo='sudo '
+alias rclone-mnt='rclone mount --daemon'
 
 # deno misbehaves and makes $HOME/.deno
 alias deno="env HOME=\"${XDG_DATA_HOME}/deno\" deno"
+
+if [ "$HOSTNAME" = "cake" ] ; then
+    # from what i remember this works around a weird bug with the weird hardware in this laptop?
+    alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
+fi
 
 # shell behaviour
 export HISTCONTROL="ignoredups:ignorespace"
@@ -68,9 +74,14 @@ enable -n echo
 # custom functions
 source "${SCRIPT_DIR}/bash_functions"
 
-export WINEARCH="win64"
-#export WINEPREFIX="${XDG_DATA_LOC}/wine"
-if [ -d "${XDG_DATA_LOC}/wine64" ] ; then export WINEPREFIX="${XDG_DATA_LOC}/wine64" ; else export WINEPREFIX="${XDG_DATA_LOC}/wine" ; fi
+if [ "$HOSTNAME" = "cake" ] ; then
+    export WINEARCH="win32"
+    export WINEPREFIX="${XDG_DATA_LOC}/wine"
+else
+    export WINEARCH="win64"
+    #export WINEPREFIX="${XDG_DATA_LOC}/wine"
+    if [ -d "${XDG_DATA_LOC}/wine64" ] ; then export WINEPREFIX="${XDG_DATA_LOC}/wine64" ; else export WINEPREFIX="${XDG_DATA_LOC}/wine" ; fi
+fi
 
 # node/nvm
 export NVM_DIR="${XDG_CONF_LOC}/nvm"
@@ -104,4 +115,8 @@ fi
 # some people have an ssh key that lets them get readonly access to this tmux session
 alias tmux-shared='tmux new -As shared'
 
-export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+if command -v qt5ct > /dev/null ; then
+    export QT_QPA_PLATFORMTHEME=qt5ct:qt6ct
+else
+    export QT_STYLE_OVERRIDE=Adwaita-Dark
+fi
