@@ -5,6 +5,8 @@ umask 022
 EDITOR=nano
 export EDITOR
 
+[ -d "${HOME}/.local/bin" ] && export PATH="${HOME}/.local/bin:$PATH"
+
 # Source xdg bash profile, when interactive but not posix or sh mode
 if test "$BASH" &&\
    test "$PS1" &&\
