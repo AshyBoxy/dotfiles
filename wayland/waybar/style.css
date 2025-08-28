@@ -242,7 +242,10 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: transparent;
+    border-bottom: 2px solid #70e868;
+    /* to make sure the icons are centered vertically */ 
+    border-top: 2px solid transparent;
 }
 
 #tray > .passive {
