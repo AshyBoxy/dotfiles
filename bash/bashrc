@@ -31,7 +31,7 @@ alias la='ls -a'
 alias lla='ll -a'
 
 alias du='du -hs'
-alias dua='sudo du -x --total -- * | sort -h'
+alias dua='sudo du -x --total -- * .* | sort -h'
 alias df='df -h'
 alias free='free -hw --total'
 alias bdu='btrfs filesystem du -s'
