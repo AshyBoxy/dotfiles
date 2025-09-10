@@ -11,7 +11,7 @@
     //"modules-center": ["sway/window"],
     "modules-center": [],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "memory#swap", "battery", "temperature", "custom/multiclock", "clock"],
+    "modules-right": ["network", "pulseaudio", "cpu", "memory", "memory#swap", "battery", "temperature", "tray", "custom/multiclock", "clock"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -85,8 +85,8 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
-        "spacing": 10
+        "icon-size": 16,
+        "spacing": 8
     },
     "custom/multiclock": {
         "exec": "multiclock.sh",
