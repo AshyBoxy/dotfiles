@@ -96,3 +96,15 @@ function echoa () {
         shift
     done
 }
+
+function switch_wine () {
+    if [ $1 == "win32" ] ; then
+        export WINEARCH=win32
+        export WINEPREFIX=~/.local/share/wine
+    elif [ $1 == "win64" ] ; then
+        export WINEARCH=win64
+        export WINEPREFIX=~/.local/share/wine
+    else
+        echo "unknown wine switch: $1"
+    fi
+}
