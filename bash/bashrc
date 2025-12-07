@@ -66,9 +66,9 @@ if [[ $TERM = "xterm-256color" || $TERM = "xterm-kitty" || $TERM = "tmux-256colo
     F_BLUE="\[$(tput setaf 18)\]"
     # powerline arrow
     ARROW=""
-    PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \H ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}${RESET} "
+    PS1="${B_BLUE} \t ${B_PURPLE}${F_BLUE}${ARROW}${RESET}${B_PURPLE} \u ${B_GREY}${F_PURPLE}${ARROW}${F_WHITE} \h ${F_GREY}${B_DARKGREY}${ARROW}${F_WHITE}${BOLD} \w ${RESET}${F_DARKGREY}${ARROW}${RESET} "
 else
-    PS1="\[$(tput setaf 2)\]\u\[$(tput sgr0)\]@\[$(tput setaf 2)\]\H\[$(tput sgr0)\]\[$(tput setaf 4)$(tput bold)\] \w \[$(tput sgr0)\]$ "
+    PS1="\[$(tput setaf 2)\]\u\[$(tput sgr0)\]@\[$(tput setaf 2)\]\h\[$(tput sgr0)\]\[$(tput setaf 4)$(tput bold)\] \w \[$(tput sgr0)\]$ "
 fi
 
 # disable shell builtins
