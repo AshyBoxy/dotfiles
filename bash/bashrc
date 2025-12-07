@@ -45,6 +45,9 @@ alias rclone-mnt='rclone mount --daemon'
 # deno misbehaves and makes $HOME/.deno
 alias deno="env HOME=\"${XDG_DATA_HOME}/deno\" deno"
 
+alias pma="packwiz mr add"
+alias pca="packwiz cf add"
+
 if [ "$HOSTNAME" = "cake" ] ; then
     # from what i remember this works around a weird bug with the weird hardware in this laptop?
     alias fix_volume='sudo alsactl restore && pactl set-sink-volume @DEFAULT_SINK@ 100%'
