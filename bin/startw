@@ -1,2 +1,3 @@
 #!/bin/sh
 exec Hyprland
+#exec start_plasma
