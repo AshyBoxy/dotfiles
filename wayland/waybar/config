@@ -11,7 +11,7 @@
     //"modules-center": ["sway/window"],
     "modules-center": [],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "memory#swap", "battery", "temperature", "tray", "custom/multiclock", "clock"],
+    "modules-right": ["network#en", "network", "pulseaudio", "cpu", "memory", "memory#swap", "battery", "temperature", "tray", "custom/multiclock", "clock"],
     // Modules configuration
     // "sway/workspaces": {
     //     "disable-scroll": true,
@@ -153,6 +153,17 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "interface": "wifi",
+        "interval": 1,
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{bandwidthUpBytes} UP {bandwidthDownBytes} DOWN ",
+        "format-disconnected": "Disconnected ⚠",
+        // "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip": false
+    },
+    "network#en": {
+        "interface": "en*",
         "interval": 1,
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} ",
