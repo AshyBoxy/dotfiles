@@ -1,2 +1,2 @@
-notification_daemon=dunst
+notification_daemon=swaync
 screenshots_path="/home/ashyboxy/stuff/screenshots"
