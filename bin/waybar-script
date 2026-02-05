@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+if [ -z "$DOTFILES" ] ; then
+    echo "DOTFILES is not set" >&2
+    exit 1
+fi
+
+waybar_scripts_path="${DOTFILES}/wayland/waybar/scripts"
+
+script=$1
+shift
+
+exec "${waybar_scripts_path}/${script}" "${@}"

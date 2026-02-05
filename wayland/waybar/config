@@ -5,10 +5,14 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "output": ["eDP-1"],
+// what is this by default?? it's definitely not overlay, but it doesn't seem to be dock???
+    "mode": "dock",
+//    "output": ["DVI-D-1", "HDMI-A-1"],
 //    "output": ["HDMI-A-1"],
     // Choose the order of the modules
     //"modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
+//    "modules-left": ["hyprland/workspaces", "hyprland/workspaces#windows"],
     //"modules-center": ["sway/window"],
     "modules-center": [],
     //"modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
@@ -31,7 +35,28 @@
     //     }
     // },
     "hyprland/workspaces": {
-        "all-outputs": true
+        "all-outputs": true,
+        "format": "{id}"
+    },
+    "hyprland/workspaces#windows": {
+        "all-outputs": false,
+        "active-only": true,
+        "format": "{windows}",
+        "workspace-taskbar": {
+            "enable": true,
+            "update-active-window": true,
+            "format": "{icon}",
+            "icon-size": 16
+        }
+    },
+    "custom/hyprland-resize-indicator": {
+        "exec": "waybar-script hyprland-resize-indicator",
+        "interval": 1
+    },
+    "hyprland/submap": {
+        "format": "{}",
+        "max-length": 15,
+        "tooltip": false
     },
     "keyboard-state": {
         "numlock": true,
