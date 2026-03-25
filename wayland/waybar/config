@@ -1,12 +1,12 @@
 {
+// this needs to be top layer for now, since apparently with bottom layer on hyprland 0.54 it doesn't get mouse input
     "layer": "top", // Waybar at top layer
     "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "output": ["DVI-D-1"],
-// what is this by default?? it's definitely not overlay, but it doesn't seem to be dock???
-    "mode": "dock",
+//    "mode": "dock",
 //    "output": ["DVI-D-1", "HDMI-A-1"],
 //    "output": ["HDMI-A-1"],
     // Choose the order of the modules
