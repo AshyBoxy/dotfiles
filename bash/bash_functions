@@ -108,3 +108,7 @@ function switch_wine () {
         echo "unknown wine switch: $1"
     fi
 }
+
+function umu-run-basic () {
+    WINEPREFIX=~/.local/share/umu/prefixes/base PROTONPATH=~/.local/share/Steam/compatibilitytools.d/GE-Proton10-28 umu-run $@
+}
