@@ -101,6 +101,7 @@ export PATH="${BUN_INSTALL}/bin:$PATH"
 
 export RUSTUP_HOME="${XDG_DATA_LOC}/rustup"
 export CARGO_HOME="${XDG_DATA_LOC}/cargo"
+export PATH="${CARGO_HOME}/bin:$PATH"
 export GOPATH="${XDG_DATA_LOC}/go"
 
 # ssh-agent
