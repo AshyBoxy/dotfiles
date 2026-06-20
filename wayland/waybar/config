@@ -6,6 +6,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     "output": ["DVI-D-1"],
+// what is this by default?? it's definitely not overlay, but it doesn't seem to be dock???
 //    "mode": "dock",
 //    "output": ["DVI-D-1", "HDMI-A-1"],
 //    "output": ["HDMI-A-1"],
