@@ -1,0 +1,10 @@
+show = drun
+prompt = Search
+allow_images = true
+hide_scroll = true
+no_actions = true
+layer = overlay
+
+width = 500
+height = 530
+location = top
