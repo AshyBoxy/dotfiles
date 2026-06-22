@@ -2,8 +2,8 @@
 # xdg bashrc
 #
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# If not running interactively and not under sddm, don't do anything
+[[ $- != *i* && "$0" != /usr/share/sddm/scripts/* ]] && return
 
 _find_dotfiles () {
     local a="$(dirname "$(readlink "$1")")"

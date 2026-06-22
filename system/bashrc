@@ -2,8 +2,8 @@
 # /etc/bash.bashrc
 #
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# If not running interactively and not under sddm, don't do anything
+[[ $- != *i* && "$0" != /usr/share/sddm/scripts/* ]] && return
 
 [[ $DISPLAY ]] && shopt -s checkwinsize
 
