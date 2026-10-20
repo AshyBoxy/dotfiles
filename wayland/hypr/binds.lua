@@ -76,6 +76,7 @@ bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 bind(mainMod .. " + CTRL + SHIFT + 1", hl.dsp.workspace.move({ monitor = "DP-1" }))
 bind(mainMod .. " + CTRL + SHIFT + 2", hl.dsp.workspace.move({ monitor = "HDMI-A-1" }))
 bind(mainMod .. " + CTRL + SHIFT + 3", hl.dsp.workspace.move({ monitor = "eDP-1" }))
+bind(mainMod .. " + CTRL + SHIFT + 4", hl.dsp.workspace.move({ monitor = "DVI-D-1" }))
 
 bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })

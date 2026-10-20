@@ -19,8 +19,8 @@ hl.config({
         kb_layout = "gb",
         kb_variant = "",
         kb_model = "",
-        kb_options = "compose:rctrl, lv3:ralt_switch, lv5:caps_switch, shift:both_capslock",
-        -- kb_options = "kb_options = compose:rctrl, lv3:ralt_switch, lv5:caps_switch",
+        kb_options = "compose:rctrl, lv3:ralt_switch, lv5:caps_switch, shift:both_capslock, ashyboxy:scrolllock",
+--        kb_options = "kb_options = compose:rctrl, lv3:ralt_switch, lv5:caps_switch, ashyboxy:scrolllock",
         kb_rules = "",
 
         repeat_rate = 30,
