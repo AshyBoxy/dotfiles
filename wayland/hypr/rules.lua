@@ -17,6 +17,15 @@ hl.window_rule({
     rounding = 0,
     no_shadow = true
 })
+hl.window_rule({
+    name = "no-border-when-only",
+    match = {
+        workspace = "f[1]s[false]"
+    },
+    border_size = 0,
+    rounding = 0,
+    no_shadow = true
+})
 
 -- # make xdg file picker float and not be a horrible shape
 -- # this also acts weirdly with hyprland's borders, for xwayland pickers, so just turn borders off
