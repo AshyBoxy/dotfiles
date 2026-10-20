@@ -11,14 +11,15 @@ hl.workspace_rule({
 hl.window_rule({
     name = "no-border-when-only",
     match = {
-        workspace = "w[v1]s[false]"
+        float = false,
+        workspace = "w[tv1]s[false]"
     },
     border_size = 0,
     rounding = 0,
     no_shadow = true
 })
 hl.window_rule({
-    name = "no-border-when-only",
+    name = "no-border-when-only-fullscreen",
     match = {
         workspace = "f[1]s[false]"
     },
