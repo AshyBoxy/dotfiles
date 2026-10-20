@@ -1,0 +1,15 @@
+partial xkb_compatibility "scrolllock" {
+    virtual_modifiers ScrollLock;
+    setMods.clearLocks = True;
+
+    // matching what xkeyboard-config does
+    // i don't know why the first part is needed, xkb is confusing
+    // you should probably have it already anyway from it being include in the complete compat
+    interpret Scroll_Lock+Any {
+        virtualModifier = ScrollLock;
+        action = LockMods(modifiers=modMapMods);
+    };
+    interpret Scroll_Lock {
+        action = LockMods(modifiers=ScrollLock);
+    };
+};

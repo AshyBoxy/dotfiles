@@ -1,0 +1,4 @@
+! include %S/evdev
+ 
+! option     = compat
+  ashyboxy:scrolllock = +ashyboxy(scrolllock)
