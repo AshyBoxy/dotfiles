@@ -1,0 +1,90 @@
+#alltabs-button {
+  display: none !important;
+}
+
+#new-tab-button {
+    /* without the window buttons it looks kinda weird without padding */
+    padding-inline-end: 4px !important;
+}
+
+/*#navigator-toolbox {
+    border-bottom: none !important;
+}*/
+
+hbox.titlebar-spacer:nth-child(3) {
+  display: none !important;
+}
+
+hbox.titlebar-buttonbox-container:nth-child(6) {
+  display: none !important;
+}
+
+/* hide the window buttons in the tabs bar */
+#TabsToolbar > .titlebar-buttonbox-container {
+  display: none !important;
+} 
+
+/* custom tab group color stuff */
+html>body {
+  /* see tabs.css for more info
+   * https: //github.com/mozilla-firefox/firefox/blob/main/browser/themes/shared/tabbrowser/tabs.css
+   *
+   * TAB GROUP COLORS
+   * tab-group-color-* is used for expanded groups in light mode and collapsed groups in dark mode
+   * tab-group-color-*-invert is used for expanded groups in dark mode
+   * tab-group-color-*-pale is used for collapsed groups in light mode
+   */
+
+  /* vanilla colors */
+  --tab-group-color-blue: #0069CC;
+  --tab-group-color-blue-invert: #52A9FE;
+  --tab-group-color-blue-pale: #F2F9FF;
+  --tab-group-color-purple: #8C39BC;
+  --tab-group-color-purple-invert: #C188EA;
+  --tab-group-color-purple-pale: #FBF6FF;
+  --tab-group-color-cyan: #007B7C;
+  --tab-group-color-cyan-invert: #4AB6C7;
+  --tab-group-color-cyan-pale: #EFFBFC;
+  --tab-group-color-orange: #B14200;
+  --tab-group-color-orange-invert: #EE8545;
+  --tab-group-color-orange-pale: #FFF6F1;
+  --tab-group-color-yellow: #955C00;
+  --tab-group-color-yellow-invert: #F5AE39;
+  --tab-group-color-yellow-pale: #FCF8EF;
+  --tab-group-color-pink: #BB1562;
+  --tab-group-color-pink-invert: #E17CC2;
+  --tab-group-color-pink-pale: #FFF5FB;
+  --tab-group-color-green: #477A00;
+  --tab-group-color-green-invert: #6EBB5D;
+  --tab-group-color-green-pale: #F4FBF2;
+  --tab-group-color-red: #C21725;
+  --tab-group-color-red-invert: #F47B74;
+  --tab-group-color-red-pale: #FFF5F5;
+  --tab-group-color-gray: #5E6A77;
+  --tab-group-color-gray-invert: #99A6B4;
+  --tab-group-color-gray-pale: #F2F9FF;
+  --tab-group-label-text-dark: var(--color-gray-100);
+  
+  /* custom colors */
+  --tab-group-color-test: #BBBBBB;
+  --tab-group-color-test-invert: #AAAAAA;
+  --tab-group-color-test-pale: #FFFFFF;
+  --tab-group-color-test2: #2f88ff;
+  --tab-group-color-test2-invert: #928aa0;
+  --tab-group-color-test2-pale: #94c69c;
+}
+
+.tab-group-editor-swatches {
+  display: grid !important;
+  grid-template-columns: repeat(var(--tab-group-colors-vanilla-count), 1fr);
+  row-gap: 1rem;
+  width: 100%;
+}
+
+.tab-group-editor-swatches > * {
+  justify-self: center;
+}
+
+/* tab-group[collapsed]>.tab-group-label-container>.tab-group-label {
+  outline: 1px solid light-dark(var(--tab-group-color), var(--tab-group-color-pale)) !important;
+} */
