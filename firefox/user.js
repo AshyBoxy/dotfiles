@@ -141,3 +141,6 @@ user_pref("font.name.sans-serif.x-western", "Roboto");
 user_pref("font.name.serif.x-western", "Roboto");
 
 user_pref("browser.urlbar.showSearchTerms.enabled", false);
+
+
+user_pref("browser.nova.enabled", false);
